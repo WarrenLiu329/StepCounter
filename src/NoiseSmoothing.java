@@ -83,13 +83,18 @@ public class NoiseSmoothing {
 	}
 	/****
 	 * 
-	 * @param accelX
-	 * @param accelY
-	 * @param accelZ
+	 * @param accelX acceleration in the x-axis
+	 * @param accelY acceleration in the y-axis
+	 * @param accelZ acceleration in the z-axis
 	 * @return the magnitude of a set of accelerations per ms.
 	 */
 	public static double getMagnitiudeOf3dVectors(double accelX, double accelY, double accelZ){
 		return Math.sqrt(accelX*accelX + accelY*accelY + accelZ*accelZ);
+	}
+	
+	public static double[] get3dmagnitudes(double[] accelX, double[] accelY, double[] accelZ){
+		
+		
 	}
 	
 	
