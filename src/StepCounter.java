@@ -1,13 +1,15 @@
 
 public class StepCounter {
 	
-	private double[] times;
-	private double[][] sensorData;
-	
 	public StepCounter(double[] times, double[][] sensorData ){
-		this.times = times;
-		this.sensorData = sensorData;
+		
 	}
 	
-	private static int coun
+	private static int countSteps(double[] times, double[][] sensorData){
+		
+	}
+	
+	private static double calculateMagnitude(double x, double y, double z){
+		return Math.sqrt(x*x + y*y + z*z);
+	}
 }
