@@ -15,6 +15,8 @@ public class BasicPlotting {
 			sample1[i] = 10;
 		}
 		
+
+		
 		addNoise(sample1, 5);
 		addNoise(sample2, 50);
 		

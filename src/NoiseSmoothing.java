@@ -7,14 +7,25 @@ public class NoiseSmoothing {
 	public static void main(String[] args) {
 		double rate = 5;
 		int size = 100;
-
+		
+		
+		String names = "time (ms),  accel x,  accel y,  accel z,  gryo x,  gyro y,  gyro z";
+		String[] headers = names.split(",");
+		String filePath = "/Volumes/WARREN_LIU/Java/NoiseSmoothing/data/walkingSampleData-out.csv";
 		double[] sample = getRandomSample(100, 5, 30);
 		//double[] result = generalRunningAverage(sample, 20);
+		CSVData data = new CSVData(filePath, headers, 1);
+		double[] accelX = data.getColumn(1);
+		double[] accelY = data.getColumn(2);
+		double[] accelZ = data.getColumn(3);
 		
 		Plot2DPanel plot = new Plot2DPanel();
 
 		// add a line plot to the PlotPanel
-		plot.addLinePlot("Original Signal", sample);
+		plot.addLinePlot("Accel-X", accelX);
+		//plot.addLinePlot("Accel-Y", accelY);
+		//plot.addLinePlot("Accel-Z", accelZ);
+		
 		//plot.addLinePlot("Output of Running Average", result);
 
 		// put the PlotPanel in a JFrame, as a JPanel
@@ -70,4 +81,16 @@ public class NoiseSmoothing {
 		
 		return sample;
 	}
+	/****
+	 * 
+	 * @param accelX
+	 * @param accelY
+	 * @param accelZ
+	 * @return the magnitude of a set of accelerations per ms.
+	 */
+	public static double getMagnitiudeOf3dVectors(double accelX, double accelY, double accelZ){
+		return Math.sqrt(accelX*accelX + accelY*accelY + accelZ*accelZ);
+	}
+	
+	
 }
