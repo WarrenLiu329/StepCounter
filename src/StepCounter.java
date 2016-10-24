@@ -12,13 +12,16 @@ public class StepCounter {
 		double[] magnitudes = calculateMagnitudesFor(sensorData);
 		double mean = calculateMean(magnitudes);
 		double standardDeviation = calculateStandardDeviation(magnitudes, mean);
-		for (int i = 1; i < magnitudes.length-1; i++ ){
-		if (isPeak(magnitudes, i)){
-			if ()
-		}
+		for (int i = 1; i < magnitudes.length - 1; i++) {
+			if (isPeak(magnitudes, i)) {
+				if (Math.abs(magnitudes[i] - mean) < standardDeviation
+						&& Math.abs(magnitudes[i] - mean) > -standardDeviation) {
+					steps++;
+				}
+			}
 		}
 		return steps;
-		
+
 	}
 
 	private static double calculateMagnitude(double x, double y, double z) {
@@ -54,18 +57,16 @@ public class StepCounter {
 
 	/****
 	 * checks if a value is greater than its values next to it
+	 * 
 	 * @param index
 	 * @param arr
-	 * @param magnitudes 
+	 * @param magnitudes
 	 * @return whether an index is considered a peak
 	 */
 	private static boolean isPeak(double[] arr, int index) {
-		for (int i = 1; i < arr.length - 1; i++) {
-			if (arr[index] > arr[i - 1] && arr[index] > arr[i + 1]) {
-				return true;
-			}
+		if (arr[index] > arr[index - 1] && arr[index] > arr[index + 1]) {
+			return true;
 		}
-
 		return false;
 	}
 }
