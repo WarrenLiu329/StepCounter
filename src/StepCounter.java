@@ -3,7 +3,7 @@ public class StepCounter {
 
 	public StepCounter(String filepath, String[] columnNames, int linesToIgnore) {
 		CSVData data = new CSVData(filepath, columnNames, 1);
-		String[] columnHeaders = {"accel x", "accel Y", "accel Z"};
+		String[] columnHeaders = { "accel x", "accel Y", "accel Z" };
 		double[][] accelData = data.getMultipleColumns(columnHeaders);
 	}
 
@@ -12,8 +12,10 @@ public class StepCounter {
 		double[] magnitudes = calculateMagnitudesFor(sensorData);
 		double mean = calculateMean(magnitudes);
 		double standardDeviation = calculateStandardDeviation(magnitudes, mean);
-		for (int i = 0; i < magnitudes.length; i++){
-			if (magnitudes[i] > )
+		for (int i = 1; i < magnitudes.length-1; i++ ){
+		if (isPeak(magnitudes, i)){
+			if ()
+		}
 		}
 		return steps;
 		
@@ -25,7 +27,7 @@ public class StepCounter {
 
 	private static double[] calculateMagnitudesFor(double[][] sensorData) {
 		double[] magnitudes = new double[sensorData[0].length];
-		for (int i = 0; i < sensorData[0].length; i++){
+		for (int i = 0; i < sensorData[0].length; i++) {
 			magnitudes[i] = calculateMagnitude(sensorData[i][0], sensorData[i][1], sensorData[i][2]);
 		}
 		return magnitudes;
@@ -33,11 +35,11 @@ public class StepCounter {
 
 	private static double calculateStandardDeviation(double[] arr, double mean) {
 		double standardDeviation = 0;
-		for (int i = 0; i < arr.length; i ++){
-			standardDeviation += (arr[i] - mean)*(arr[i] - mean);
+		for (int i = 0; i < arr.length; i++) {
+			standardDeviation += (arr[i] - mean) * (arr[i] - mean);
 		}
-		standardDeviation = standardDeviation/(arr.length-1);
-		
+		standardDeviation = standardDeviation / (arr.length - 1);
+
 		return Math.sqrt(standardDeviation);
 	}
 
@@ -49,18 +51,21 @@ public class StepCounter {
 
 		return (double) mean / arr.length;
 	}
+
 	/****
-	 * checks if an index is greater than its values next to it
+	 * checks if a value is greater than its values next to it
+	 * @param index
 	 * @param arr
+	 * @param magnitudes 
 	 * @return whether an index is considered a peak
 	 */
-	private static boolean isPeak(double[] arr){
-		for (int i = 1; i < arr.length-2; i++){
-			if (arr[i] > arr[i-1] && arr[i] > arr[i+1]){
+	private static boolean isPeak(double[] arr, int index) {
+		for (int i = 1; i < arr.length - 1; i++) {
+			if (arr[index] > arr[i - 1] && arr[index] > arr[i + 1]) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 }
