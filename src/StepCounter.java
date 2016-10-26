@@ -12,6 +12,7 @@ public class StepCounter {
 		double[] magnitudes = calculateMagnitudesFor(sensorData);
 		double mean = calculateMean(magnitudes);
 		double standardDeviation = calculateStandardDeviation(magnitudes, mean);
+		double[][] output = new double[magnitudes.length][times.length];
 		for (int i = 1; i < magnitudes.length - 1; i++) {
 			if (isPeak(magnitudes, i)) {
 				if (Math.abs(magnitudes[i] - mean) < standardDeviation
@@ -69,4 +70,6 @@ public class StepCounter {
 		}
 		return false;
 	}
+	
+	
 }

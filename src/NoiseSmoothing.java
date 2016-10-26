@@ -93,6 +93,7 @@ public class NoiseSmoothing {
 	}
 	
 	public static double[] get3dmagnitudes(double[] accelX, double[] accelY, double[] accelZ){
+		return accelZ;
 		
 		
 	}
