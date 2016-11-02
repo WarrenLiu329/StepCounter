@@ -58,5 +58,19 @@ public class StepCounter {
 		return false;
 	}
 	
+	/***
+	 * Calculates the threshold for n data points left and right of current value
+	 * @param startingIndex index that we are finding threshold for
+	 * @param n values left and right of startingIndex to use in window
+	 * @return threshold for this window
+	 */
+	private static double getThresholdForSection(double[] arr, int startingIndex, int n){
+		double[] magnitudes = CSVData.getPartOfArray(arr, startingIndex - n, startingIndex + n);
+		double mean = calculateMean(magnitudes);
+		double standardDeviation = calculateStandardDeviation(magnitudes, mean);
+		double threshold = mean+standardDeviation;
+		return threshold;
+	}
+	
 	
 }
