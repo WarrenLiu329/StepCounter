@@ -1,6 +1,6 @@
 
 public class StepCounter {
-
+//aaaaa
 	public static int countSteps(double[][] sensorData) {
 		int steps = 0;
 		double[] magnitudes = calculateMagnitudesFor(sensorData);
@@ -13,7 +13,8 @@ public class StepCounter {
 //			}
 //		}
 		int n = 10;
-		for(int i = n; n < magnitudes.length - n; i++){
+		System.out.println(magnitudes.length);
+		for(int i = n; i < magnitudes.length - n; i++){
 			double threshold = getThresholdForSection(magnitudes, i, n);
 			if (isPeak(magnitudes[i], magnitudes[i - 1], magnitudes[i + 1])) {
 				if (magnitudes[i] > threshold)steps++;
