@@ -122,7 +122,7 @@ public class CSVData {
 		return columnNames;
 	}
 	
-	public double[] getPartOfArray(double[] data, int start, int end){
+	public static double[] getPartOfArray(double[] data, int start, int end){
 		int nextFreeIndex = 0;
 		double[] arr = new double[end-start];
 		for(int i = start; i < end+1; i++){

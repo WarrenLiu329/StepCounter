@@ -22,6 +22,7 @@ public class NoiseSmoothing {
 
 		// add a line plot to the PlotPanel
 		plot.addLinePlot("Accel-X", accelX);
+
 		// plot.addLinePlot("Accel-Y", accelY);
 		// plot.addLinePlot("Accel-Z", accelZ);
 
